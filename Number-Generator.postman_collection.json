@@ -1,0 +1,144 @@
+{
+	"info": {
+		"_postman_id": "3ec2636e-6e0e-4926-9e40-be96c300bcac",
+		"name": "Number-Generator",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/api/generate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n    \"goal\" : 10,\r\n    \"step\" : 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/generate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"generate"
+					]
+				},
+				"description": "create number generation task"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/bulkGenerate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "  [{\r\n    \"goal\" : 100,\r\n    \"step\" : 2\r\n},\r\n{\r\n    \"goal\" : 10,\r\n    \"step\" : 2\r\n}\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/bulkGenerate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"bulkGenerate"
+					]
+				},
+				"description": "create bulk number generation task"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/tasks/da13808d-a686-445a-90b7-73bfab13fa3f/status",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"goal\" : \"10\",\r\n    \"step\" : \"2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/tasks/da13808d-a686-445a-90b7-73bfab13fa3f/status",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"tasks",
+						"da13808d-a686-445a-90b7-73bfab13fa3f",
+						"status"
+					]
+				},
+				"description": "Get task status"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/tasks/da13808d-a686-445a-90b7-73bfab13fa3f?action=get_numlist",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"goal\" : \"10\",\r\n    \"step\" : \"2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/tasks/da13808d-a686-445a-90b7-73bfab13fa3f?action=get_numlist",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"tasks",
+						"da13808d-a686-445a-90b7-73bfab13fa3f"
+					],
+					"query": [
+						{
+							"key": "action",
+							"value": "get_numlist"
+						}
+					]
+				},
+				"description": "Get task results "
+			},
+			"response": []
+		}
+	]
+}
