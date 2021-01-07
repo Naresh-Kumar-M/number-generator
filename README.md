@@ -9,7 +9,7 @@ Number generator system is a service that exposes REST API to perform following 
 
 ## Design 
 Number generation system uses in memory H2 database to save the tasks/bulk tasks created by task API. The state of task is set to QUEUED when the task is created. 
-A scheduled task processor (runs every 10 seconds by default) fetches all the task requests in QUEUED state for processing. The task state is changed to IN_PROGRESS when task is being processed. The number generator method will generate the number sequence and sleeps for a random time between 10 to 30 seconds. As a performance imporvement, the result of task is checked against the already run task and computed only if its not computed previously.
+A scheduled task processor (runs every 10 seconds by default) fetches all the task requests in QUEUED state for processing. The task state is changed to IN_PROGRESS when task is being processed. The number generator method will generate the number sequence and sleeps for a random time between 10 to 30 seconds. As a performance improvement, the result of task is checked against the already run task and computed only if its not computed previously.
 
 ## How to run 
 - clone the repository and run following commands to start service
