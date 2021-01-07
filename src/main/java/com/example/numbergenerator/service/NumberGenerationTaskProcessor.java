@@ -2,10 +2,9 @@ package com.example.numbergenerator.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.StringJoiner;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
-import java.util.stream.LongStream;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -71,9 +70,12 @@ public class NumberGenerationTaskProcessor {
   private String generateNumbers(long goal, long step) {
     // Sleep for random time between 10 to 30 seconds
     sleep(ThreadLocalRandom.current().nextInt(10, 30));
-    return LongStream.iterate(goal, n -> n >= 0 ,n -> n - step)    
-    .mapToObj(Long::toString)
-    .collect(Collectors.joining(","));   
+    StringJoiner stringJoiner = new StringJoiner(",");
+    while (goal >= 0) {
+      stringJoiner.add(Long.toString(goal));
+      goal -= step;
+    }
+    return stringJoiner.toString();
   }
 
   private void sleep(int seconds) {

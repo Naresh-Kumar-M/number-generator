@@ -1,5 +1,6 @@
 package com.example.numbergenerator.service;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -36,7 +37,7 @@ public class TaskService {
   @Transactional(readOnly = true)
   public TaskStatus getTaskStatus(String taskId) {
     Optional<Task> task = taskRepository.findById(taskId);
-    if (task.isEmpty()) {
+    if (!task.isPresent()) {
       throw new TaskNotFoundException();
     }
     return getTaskStatus(task.get());
@@ -61,12 +62,12 @@ public class TaskService {
   @Transactional(readOnly = true)
   public List<String> getTaskResult(String taskId) {
     Optional<Task> task = taskRepository.findById(taskId);
-    if (task.isEmpty()) {
+    if (!task.isPresent()) {
       throw new TaskNotFoundException();
     }
     TaskStatus status = getTaskStatus(task.get());
     if (status != TaskStatus.SUCCESS) {
-      return List.of(status.name());
+      return Arrays.asList(status.name());
     }
     return task.get().getTaskData()
         .stream()
